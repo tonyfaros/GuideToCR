@@ -26,7 +26,8 @@
             android:name=".Activities.Inicio"
             android:label="@string/title_activity_inicio"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Lugar_activity"></activity>
+        <activity android:name=".Activities.Lugar_activity" />
+        <activity android:name=".Activities.Palabra_activity"></activity>
     </application>
 
 </manifest>

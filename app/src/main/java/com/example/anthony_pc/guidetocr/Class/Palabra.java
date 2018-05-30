@@ -9,12 +9,14 @@ public class Palabra {
     private String palabra;
     private String descripcion;
     private String ejemplo;
+    private boolean aceptado;
 
-    public Palabra(int id, String palabra, String descripcion, String ejemplo) {
+    public Palabra(int id, String palabra, String descripcion, String ejemplo,boolean aceptado) {
         this.id = id;
         this.palabra = palabra;
         this.descripcion = descripcion;
         this.ejemplo = ejemplo;
+        this.aceptado = aceptado;
     }
 
     public int getId() {
@@ -47,5 +49,13 @@ public class Palabra {
 
     public void setEjemplo(String ejemplo) {
         this.ejemplo = ejemplo;
+    }
+
+    public boolean isAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(boolean aceptado) {
+        this.aceptado = aceptado;
     }
 }

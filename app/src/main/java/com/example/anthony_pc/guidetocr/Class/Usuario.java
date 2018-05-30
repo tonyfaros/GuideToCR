@@ -7,15 +7,17 @@ package com.example.anthony_pc.guidetocr.Class;
 public class Usuario {
 
     private int id;
+    private boolean admin;
     private String nombre;
     private String correo;
     private String contrasena;
 
-    public Usuario(int id, String nombre, String correo, String contrasena) {
+    public Usuario(int id, String nombre, String correo, String contrasena, boolean admin) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
+        this.admin = admin;
     }
 
     public int getId() {
@@ -48,5 +50,13 @@ public class Usuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

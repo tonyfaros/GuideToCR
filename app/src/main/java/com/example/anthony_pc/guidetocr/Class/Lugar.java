@@ -13,8 +13,9 @@ public class Lugar {
     private String descripcion;
     private String datos;
     private String ubicacion;
+    private boolean aceptado;
 
-    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion) {
+    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion,boolean aceptado) {
         this.id = id;
         this.nombre = nombre;
         this.clima = clima;
@@ -22,6 +23,7 @@ public class Lugar {
         this.descripcion = descripcion;
         this.datos = datos;
         this.ubicacion = ubicacion;
+        this.aceptado = aceptado;
     }
 
     public int getId() {
@@ -78,5 +80,13 @@ public class Lugar {
 
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
+    }
+
+    public boolean isAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(boolean aceptado) {
+        this.aceptado = aceptado;
     }
 }
