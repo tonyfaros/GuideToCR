@@ -3,7 +3,7 @@ package com.example.anthony_pc.guidetocr.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.anthony_pc.guidetocr.Class.Download;
+import com.example.anthony_pc.guidetocr.Class.DownUpload;
 import com.example.anthony_pc.guidetocr.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Download d = new Download();
+        DownUpload d = new DownUpload(this);
 
     }
 
