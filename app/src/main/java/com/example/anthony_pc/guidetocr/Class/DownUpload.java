@@ -26,13 +26,13 @@ import java.util.Map;
 
 public class DownUpload {
 
-    public String url_users = "";
-    public String url_palabras = "";
-    public String url_lugares = "";
+    public String url_users = "https://guidetocr.herokuapp.com/user.json";
+    public String url_palabras = "https://guidetocr.herokuapp.com/words.json";
+    public String url_lugares = "https://guidetocr.herokuapp.com/places.json";
 
     public String url_post_users = "";
-    public String url_post_palabras = "";
-    public String url_post_lugares = "";
+    public String url_post_palabras = "https://guidetocr.herokuapp.com/words";
+    public String url_post_lugares = "https://guidetocr.herokuapp.com/places";
 
 
     public RequestQueue mQueue;
@@ -43,10 +43,13 @@ public class DownUpload {
 
     public DownUpload(Context context) {
         mQueue = Volley.newRequestQueue(context);
-        get_users(url_users);
-        get_palabras(url_palabras);
-        get_lugares(url_lugares);
         this.contexto = context;
+        //get_users(url_users);
+        //get_palabras(url_palabras);
+        //get_lugares(url_lugares);
+        post_sug_lug("Zurqui","Lluvioso","1000","Montañoso","Preparese para caminar","Ruta 32",false);
+        post_sug_pal("Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
+
         //new download_Users().execute();
     }
 
@@ -60,11 +63,20 @@ public class DownUpload {
                         try {
                             for (int i = 0; i < response.length(); i++) {
 
+
+
                                 int id = Integer.parseInt(response.getJSONObject(i).getString("id"));
-                                String nombre = String.valueOf(response.getJSONObject(i).getString("seguidor"));
-                                String correo = String.valueOf(response.getJSONObject(i).getString("seguido"));
-                                String contrasena = String.valueOf(response.getJSONObject(i).getString("seguido"));
+                                String nombre = String.valueOf(response.getJSONObject(i).getString("nombre"));
+                                String correo = String.valueOf(response.getJSONObject(i).getString("correo"));
+                                String contrasena = String.valueOf(response.getJSONObject(i).getString("contrasena"));
                                 boolean admin = Boolean.parseBoolean(response.getJSONObject(i).getString("admin"));
+
+                                Log.e("nombre",nombre);
+                                Log.e("correo",correo);
+                                Log.e("contrasena",contrasena);
+                                Log.e("admin",String.valueOf(admin));
+
+
 
                                 Usuario usuario = new Usuario(id, nombre, correo, contrasena, admin);
                                 instance.agregar_usuario(usuario);
@@ -93,16 +105,20 @@ public class DownUpload {
                         try {
                             for (int i = 0; i < response.length(); i++) {
 
-                                int id = Integer.parseInt(response.getJSONObject(i).getString("id"));
-                                String nombre = String.valueOf(response.getJSONObject(i).getString("nombre"));
-                                String clima = String.valueOf(response.getJSONObject(i).getString("clima"));
-                                String cobro = String.valueOf(response.getJSONObject(i).getString("cobro"));
-                                String descripcion = String.valueOf(response.getJSONObject(i).getString("descripcion"));
-                                String datos = String.valueOf(response.getJSONObject(i).getString("datos"));
-                                String ubicacion = String.valueOf(response.getJSONObject(i).getString("ubicacion"));
-                                boolean aceptado = Boolean.parseBoolean(response.getJSONObject(i).getString("aceptado"));
+                                String id =  String.valueOf(response.getJSONObject(i).get("id"));
+                                String nombre = String.valueOf(response.getJSONObject(i).get("nombre"));
+                                String clima = String.valueOf(response.getJSONObject(i).get("clima"));
+                                String cobro = String.valueOf(response.getJSONObject(i).get("tarifa"));
+                                String descripcion = String.valueOf(response.getJSONObject(i).get("descripcion"));
+                                String datos = String.valueOf(response.getJSONObject(i).get("datos"));
+                                String ubicacion = String.valueOf(response.getJSONObject(i).get("ubicacion"));
+                                String aceptado = String.valueOf(response.getJSONObject(i).get("aceptado"));
 
-                                Lugar lugar = new Lugar(id, nombre, clima, cobro, descripcion, datos, ubicacion, aceptado);
+
+                                boolean ac = Boolean.parseBoolean(aceptado);
+
+
+                                Lugar lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac);
                                 instance.agregar_lugar(lugar);
                             }
                         } catch (JSONException e) {
@@ -128,14 +144,15 @@ public class DownUpload {
                     public void onResponse(JSONArray response) {
                         try {
                             for (int i = 0; i < response.length(); i++) {
+                                Log.e("JSON",response.toString());
+                                String id = String.valueOf(response.getJSONObject(i).get("id"));
+                                String palabra = String.valueOf(response.getJSONObject(i).get("nombre"));
+                                String descripcion = String.valueOf(response.getJSONObject(i).get("descripcion"));
+                                String ejemplo = String.valueOf(response.getJSONObject(i).get("ejemplo"));
+                                String aceptado = String.valueOf(response.getJSONObject(i).get("aceptado"));
 
-                                int id = Integer.parseInt(response.getJSONObject(i).getString("id"));
-                                String palabra = String.valueOf(response.getJSONObject(i).getString("palabra"));
-                                String descripcion = String.valueOf(response.getJSONObject(i).getString("descripcion"));
-                                String ejemplo = String.valueOf(response.getJSONObject(i).getString("ejemplo"));
-                                boolean aceptado = Boolean.parseBoolean(response.getJSONObject(i).getString("aceptado"));
 
-                                Palabra pa = new Palabra(id, palabra, descripcion, ejemplo, aceptado);
+                                Palabra pa = new Palabra(Integer.parseInt(id), palabra, descripcion, ejemplo, Boolean.parseBoolean(aceptado));
                                 instance.agregar_palabra(pa);
                             }
                         } catch (JSONException e) {
@@ -168,7 +185,7 @@ public class DownUpload {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("palabra",palabra);
+                params.put("nombre",palabra);
                 params.put("descripcion",descripcion);
                 params.put("ejemplo",ejemplo);
                 params.put("aceptado",String.valueOf(aceptado));
@@ -199,7 +216,7 @@ public class DownUpload {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("nombre",nombre);
                 params.put("clima",clima);
-                params.put("cobro",cobro);
+                params.put("tarifa",cobro);
                 params.put("descripcion",descripcion);
                 params.put("datos",datos);
                 params.put("ubicacion",ubicacion);
