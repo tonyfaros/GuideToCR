@@ -1,27 +1,35 @@
 package com.example.anthony_pc.guidetocr.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
-import com.example.anthony_pc.guidetocr.Class.Lugar;
 import com.example.anthony_pc.guidetocr.Class.Palabra;
 import com.example.anthony_pc.guidetocr.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Anthony-PC on 9/6/2018.
  */
 
-public class Lugar_adapter extends ArrayAdapter {
-    private ArrayList<Lugar> lista_lugares = new ArrayList<>();
+public class Palabra_adapter extends ArrayAdapter{
 
-    public Lugar_adapter(Context context, ArrayList<Lugar> lista_lugares) {
-        super(context,0,lista_lugares);
-        this.lista_lugares = lista_lugares;
+    private ArrayList<Palabra> lista_palabras = new ArrayList<>();
+
+    public Palabra_adapter(Context context, ArrayList<Palabra> lista_palabras) {
+        super(context,0,lista_palabras);
+        this.lista_palabras = lista_palabras;
     }
 
     @Override
@@ -30,12 +38,11 @@ public class Lugar_adapter extends ArrayAdapter {
         View v = convertView;
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        v = inflater.inflate(R.layout.lugar_item, null);
+        v = inflater.inflate(R.layout.palabra_item, null);
 
 
 
         return v;
 
     }
-
 }
