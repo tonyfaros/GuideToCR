@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e("prueba","preuba");
         //DownUpload d = new DownUpload(this);
         Palabra p = new Palabra(1,"Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
-        //send_post_word(p);
+        send_post_word(p);
 
     }
 
