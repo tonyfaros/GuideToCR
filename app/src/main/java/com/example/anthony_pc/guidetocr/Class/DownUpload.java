@@ -11,14 +11,27 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
 
 /**
  * Created by Anthony-PC on 4/6/2018.
@@ -26,13 +39,13 @@ import java.util.Map;
 
 public class DownUpload {
 
-    public String url_users = "https://guidetocr.herokuapp.com/user.json";
+    public String url_users = "https://guidetocr.herokuapp.com/usuarios.json";
     public String url_palabras = "https://guidetocr.herokuapp.com/words.json";
     public String url_lugares = "https://guidetocr.herokuapp.com/places.json";
 
     public String url_post_users = "";
-    public String url_post_palabras = "https://guidetocr.herokuapp.com/words";
-    public String url_post_lugares = "https://guidetocr.herokuapp.com/places";
+    public String url_post_palabras = "https://guidetocr.herokuapp.com/words.json";
+    public String url_post_lugares = "https://guidetocr.herokuapp.com/places.json";
 
 
     public RequestQueue mQueue;
@@ -44,11 +57,11 @@ public class DownUpload {
     public DownUpload(Context context) {
         mQueue = Volley.newRequestQueue(context);
         this.contexto = context;
-        //get_users(url_users);
+        get_users(url_users);
         //get_palabras(url_palabras);
         //get_lugares(url_lugares);
-        post_sug_lug("Zurqui","Lluvioso","1000","Montañoso","Preparese para caminar","Ruta 32",false);
-        post_sug_pal("Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
+        //post_sug_lug("Zurqui","Lluvioso","1000","Montañoso","Preparese para caminar","Ruta 32",false);
+        post_sug_pal2("Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
 
         //new download_Users().execute();
     }
@@ -171,11 +184,16 @@ public class DownUpload {
 
     public void post_sug_pal(final String palabra, final String descripcion, final String ejemplo, final boolean aceptado){
 
-        StringRequest ingredienteRequest = new StringRequest(Request.Method.POST, url_post_palabras, new Response.Listener<String>() {
+        RequestQueue requestQueue = Volley.newRequestQueue(contexto);
+
+        JsonObjectRequest palabra_request = new JsonObjectRequest(Request.Method.POST, url_post_palabras,
+                null, new Response.Listener<JSONObject>() {
+
             @Override
-            public void onResponse(String response) {
-                Toast.makeText(contexto, "Success", Toast.LENGTH_SHORT).show();
+            public void onResponse(JSONObject response) {
+
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -185,17 +203,81 @@ public class DownUpload {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("nombre",palabra);
-                params.put("descripcion",descripcion);
-                params.put("ejemplo",ejemplo);
-                params.put("aceptado",String.valueOf(aceptado));
+
+                params.put("nombre","weiso");
+                params.put("descripcion","que weiso");
+                //params.put("ejemplo",ejemplo);
+                //params.put("aceptado","false");
                 return params;
             }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String,String>();
+                //headers.put("Content-Type", "application/json");
+                return headers;
+            }
+
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(contexto);
-        requestQueue.add(ingredienteRequest);
+
+        requestQueue.add(palabra_request);
 
     }
+
+    public void post_sug_pal2(final String palabra, final String descripcion, final String ejemplo, final boolean aceptado){
+        try{
+            URL url = new URL(url_post_palabras);
+            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+            conn.setRequestProperty("Accept","application/json");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+
+           /* conn.setRequestProperty("nombre",palabra);
+            conn.setRequestProperty("descripcion",descripcion);
+            conn.setRequestProperty("ejemplo",ejemplo);
+            conn.setRequestProperty("aceptado",String.valueOf(aceptado));
+*/
+            JSONObject jsonParam = new JSONObject();
+            jsonParam.put("nombre",palabra);
+            jsonParam.put("descripcion",descripcion);
+            jsonParam.put("ejemplo",ejemplo);
+            jsonParam.put("aceptado",aceptado);
+
+
+            Log.e("JSON", jsonParam.toString());
+
+            DataOutputStream dStream = new DataOutputStream(conn.getOutputStream());
+
+            dStream.writeBytes(jsonParam.toString());
+
+            dStream.flush();
+            dStream.close();
+
+            conn.disconnect();
+
+            /*params.put("nombre","weiso");
+                params.put("descripcion","que weiso");
+                //params.put("ejemplo",ejemplo);
+                //params.put("aceptado","false");*/
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void post_sug_pal3(final String palabra, final String descripcion, final String ejemplo, final boolean aceptado){
+
+
+    }
+
+
 
     public void post_sug_lug(final String nombre, final String clima, final String cobro,
                              final String descripcion, final String datos, final String ubicacion,final boolean aceptado){
@@ -228,6 +310,8 @@ public class DownUpload {
         requestQueue.add(ingredienteRequest);
 
     }
+
+
 
 
 

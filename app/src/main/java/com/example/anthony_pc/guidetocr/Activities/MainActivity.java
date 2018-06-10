@@ -7,8 +7,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.anthony_pc.guidetocr.Class.DownUpload;
 import com.example.anthony_pc.guidetocr.Class.Globales;
+import com.example.anthony_pc.guidetocr.Class.Palabra;
+import com.example.anthony_pc.guidetocr.Class.RedditAPI;
 import com.example.anthony_pc.guidetocr.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -24,6 +33,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,9 +90,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.e("prueba","preuba");
-        DownUpload d = new DownUpload(this);
+        //DownUpload d = new DownUpload(this);
+        Palabra p = new Palabra(1,"Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
+        //send_post_word(p);
 
     }
+
+    private void send_post_word(Palabra palabra){
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl("https://guidetocr.herokuapp.com/words.json")
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        RedditAPI api = retrofit.create(RedditAPI.class);
+        Call<Palabra> call = api.create_word(palabra);
+
+        call.enqueue(new Callback<Palabra>() {
+            @Override
+            public void onResponse(Call<Palabra> call, retrofit2.Response<Palabra> response) {
+                Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Palabra> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
