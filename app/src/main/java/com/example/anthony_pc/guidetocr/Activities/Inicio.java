@@ -119,4 +119,11 @@ public class Inicio extends AppCompatActivity
                 .replace(R.id.container, fragment)
                 .commit();
     }
+
+    public void diccionario(View view){
+        fragment = new Palabras();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
 }
