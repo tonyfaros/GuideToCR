@@ -6,21 +6,33 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
 import android.view.KeyEvent;
+
+import android.support.v4.app.ListFragment;
+import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.anthony_pc.guidetocr.Adapters.Lugar_adapter;
+import com.example.anthony_pc.guidetocr.Class.Globales;
 import com.example.anthony_pc.guidetocr.Class.Lugar;
 import com.example.anthony_pc.guidetocr.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
-public class Lugares extends Fragment {
+public class Lugares extends ListFragment implements SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener {
 
 
     ArrayList<Lugar> List = new ArrayList<>();
@@ -31,6 +43,12 @@ public class Lugares extends Fragment {
     Lugar_adapter adapter;
     ListView list;
 
+    int largoLista = 0;
+
+    private Context context;
+
+    private Globales instance= Globales.getInstance();
+
 
 
     private OnFragmentInteractionListener mListener;
@@ -38,6 +56,35 @@ public class Lugares extends Fragment {
     public Lugares() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = getActivity();
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.search_menu,menu);
+        MenuItem searchItem = menu.findItem(R.id.item_search);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView.setOnQueryTextListener(this);
+        searchView.setQueryHint("Search");
+
+        super.onCreateOptionsMenu(menu,inflater);
+
+
+    }
+
 
 
     @Override
@@ -57,10 +104,11 @@ public class Lugares extends Fragment {
                     R.drawable.puente),category[i]));
         }
 
+        largoLista = instance.get_lugares_user().size();
 
+        Log.e("largooo",String.valueOf(instance.get_lugares_user().size()));
 
-
-        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,List,list);
+        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);
         return view;
 
@@ -90,6 +138,44 @@ public class Lugares extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public boolean onMenuItemActionExpand(MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        ArrayList<Lugar> listaTemp = new ArrayList<>();
+        if(s == null || s.trim().isEmpty()){
+            resetSearch();
+            return false;
+        }
+        for(Lugar i : instance.get_lugares_user()){
+            if(i.getNombre().toLowerCase().contains(s.toLowerCase())){
+                listaTemp.add(i);
+            }
+        }
+        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,listaTemp,list);
+        list.setAdapter(adapter);
+
+        return false;
+    }
+
+    public void resetSearch(){
+        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
+        list.setAdapter(adapter);
     }
 
     /**

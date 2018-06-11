@@ -1,6 +1,7 @@
 package com.example.anthony_pc.guidetocr.Class;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.anthony_pc.guidetocr.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -139,7 +141,8 @@ public class DownUpload {
                                 boolean ac = Boolean.parseBoolean(aceptado);
 
 
-                                Lugar lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac);
+                                Lugar lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac, BitmapFactory.decodeResource(contexto.getResources(),
+                                        R.drawable.puente),"Montaña");
                                 instance.agregar_lugar(lugar);
                                 Log.e("lugar--------",String.valueOf(instance.getLista_lugares().size()));
                             }

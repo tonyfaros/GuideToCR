@@ -1,5 +1,6 @@
 package com.example.anthony_pc.guidetocr.Activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -114,10 +115,12 @@ public class Inicio extends AppCompatActivity
 
     }
     public void lugares(View view){
-        fragment = new Lugares();
+        Intent intent = new Intent(this,Lista_lugares.class);
+        startActivity(intent);
+        /*fragment = new Lugares();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
-                .commit();
+                .commit();*/
     }
 
     public void diccionario(View view){
