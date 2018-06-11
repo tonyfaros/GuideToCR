@@ -62,7 +62,7 @@ public class Lista_lugares extends AppCompatActivity {
         adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -96,7 +96,7 @@ public class Lista_lugares extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
     public void resetSearch(){
         adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);
