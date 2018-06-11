@@ -113,4 +113,10 @@ public class Inicio extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+    public void lugares(View view){
+        fragment = new Lugares();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
 }

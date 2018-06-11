@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="7dp"
         android:elevation="50dp"
@@ -44,16 +44,6 @@
             android:text="Manuel Antonio"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_above="@+id/crearCuenta_button"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:background="@android:color/darker_gray" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

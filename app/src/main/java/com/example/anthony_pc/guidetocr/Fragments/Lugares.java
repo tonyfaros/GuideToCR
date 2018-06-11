@@ -1,6 +1,8 @@
 package com.example.anthony_pc.guidetocr.Fragments;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -77,16 +79,18 @@ public class Lugares extends Fragment {
 
         list = view.findViewById(R.id.list);
 
+        //Bitmap image2 = ((BitmapDrawable)imageBtn.getBackground()).getBitmap();
 
         for(int i = 0;i<nombre.length;i++){
 
-            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true,(Drawable)getResources().getDrawable(images[0]),category[i]));
+            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true, BitmapFactory.decodeResource(getContext().getResources(),
+                    R.drawable.puente),category[i]));
         }
 
 
 
 
-        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_inicio,List,list);
+        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,List,list);
         list.setAdapter(adapter);
         return view;
     }
