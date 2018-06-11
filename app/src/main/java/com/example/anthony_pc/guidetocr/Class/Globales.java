@@ -42,7 +42,7 @@ public class Globales {
         Globales.usuario_actual = usuario_actual;
     }
 
-    public static ArrayList<Usuario> getLista_usuarios() {
+    public ArrayList<Usuario> getLista_usuarios() {
         return lista_usuarios;
     }
 
@@ -53,6 +53,7 @@ public class Globales {
     public ArrayList<Palabra> getLista_palabras() {
         return lista_palabras;
     }
+
 
     public void agregar_usuario(Usuario usuario){
         lista_usuarios.add(usuario);

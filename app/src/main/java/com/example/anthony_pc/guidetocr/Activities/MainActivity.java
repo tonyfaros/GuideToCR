@@ -1,10 +1,13 @@
 package com.example.anthony_pc.guidetocr.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,6 +21,7 @@ import com.example.anthony_pc.guidetocr.Class.DownUpload;
 import com.example.anthony_pc.guidetocr.Class.Globales;
 import com.example.anthony_pc.guidetocr.Class.Palabra;
 import com.example.anthony_pc.guidetocr.Class.RedditAPI;
+import com.example.anthony_pc.guidetocr.Class.Usuario;
 import com.example.anthony_pc.guidetocr.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -90,10 +94,46 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.e("prueba","preuba");
-        //DownUpload d = new DownUpload(this);
-        Palabra p = new Palabra(1,"Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
-        send_post_word(p);
+        DownUpload d = new DownUpload(this);
+        //Palabra p = new Palabra(1,"Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
+        //send_post_word(p);
+        Log.e("lugar",String.valueOf(instance.getLista_lugares().size()));
+        Log.e("pal",String.valueOf(instance.getLista_palabras().size()));
 
+
+
+    }
+
+
+
+    public Usuario checkLogin(String correo,String contrasena){
+        Log.e("usuar",String.valueOf(instance.getLista_usuarios().size()));
+        for(Usuario i : instance.getLista_usuarios()){
+            if(i.getCorreo().equals(correo) && i.getContrasena().equals(contrasena)){
+                return i;
+            }
+        }return null;
+    }
+
+    public void ingresar(View view){
+        Log.e("usuar",String.valueOf(instance.getLista_usuarios().size()));
+        Usuario user = checkLogin(emailTxt.getText().toString(), passwordTxt.getText().toString());
+        if( user != null){
+            Intent intent = new Intent(this, Inicio.class);
+            instance.setUsuario_actual(user);
+            startActivity(intent);
+            finish();
+        }else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Aviso")
+                    .setMessage("Usuario no encontrado")
+                    .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    }).show();
+        }
     }
 
     private void send_post_word(Palabra palabra){
