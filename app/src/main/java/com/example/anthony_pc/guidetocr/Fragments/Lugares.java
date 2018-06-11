@@ -61,15 +61,11 @@ public class Lugares extends Fragment {
         }
     }
 
-    View v;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_lugares, container, false);
-
-        return v;
+        return inflater.inflate(R.layout.fragment_lugares, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
