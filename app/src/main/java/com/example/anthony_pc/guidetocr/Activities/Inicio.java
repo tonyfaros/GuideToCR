@@ -17,10 +17,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.anthony_pc.guidetocr.Fragments.InicioFragment;
+import com.example.anthony_pc.guidetocr.Fragments.Lugares;
+import com.example.anthony_pc.guidetocr.Fragments.Palabras;
 import com.example.anthony_pc.guidetocr.R;
 
 public class Inicio extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, InicioFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, InicioFragment.OnFragmentInteractionListener, Lugares.OnFragmentInteractionListener, Palabras.OnFragmentInteractionListener{
 
     Fragment fragment;
     FragmentManager fragmentManager = getSupportFragmentManager();

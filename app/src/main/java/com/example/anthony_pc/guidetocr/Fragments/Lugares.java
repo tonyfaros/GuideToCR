@@ -1,14 +1,20 @@
 package com.example.anthony_pc.guidetocr.Fragments;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.anthony_pc.guidetocr.Adapters.Lugar_adapter;
+import com.example.anthony_pc.guidetocr.Class.Lugar;
 import com.example.anthony_pc.guidetocr.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,20 +36,22 @@ public class Lugares extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    ArrayList<Lugar> List = new ArrayList<>();
+    String[] nombre = {"RECETAS SALUDABLES","RECETAS COMIDA RÁPIDA","RECETAS DULCES", "TODAS LAS RECETAS"};
+    String[] category = {"saludable","comida_rapida","dulce", "todas"};
+    int[] images = {R.drawable.puente};
+
+    Lugar_adapter adapter;
+    ListView list;
+
+
     public Lugares() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Lugares.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Lugares newInstance(String param1, String param2) {
+
+
         Lugares fragment = new Lugares();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -65,7 +73,22 @@ public class Lugares extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lugares, container, false);
+        View view = inflater.inflate(R.layout.fragment_lugares, container, false);
+
+        list = view.findViewById(R.id.list);
+
+
+        for(int i = 0;i<nombre.length;i++){
+
+            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true,(Drawable)getResources().getDrawable(images[0]),category[i]));
+        }
+
+
+
+
+        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_inicio,List,list);
+        list.setAdapter(adapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
