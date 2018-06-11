@@ -103,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
         Log.e("lugar",String.valueOf(instance.getLista_lugares().size()));
         Log.e("pal",String.valueOf(instance.getLista_palabras().size()));
 
-
-
     }
 
 
@@ -137,6 +135,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).show();
         }
+    }
+
+    public void crearCuenta(View view){
+        Intent intent = new Intent(this, Registrar_activity.class);
+        //intent.putExtra("first_name", "");
+        //intent.putExtra("last_name", "");
+        //intent.putExtra("email", "");
+        startActivity(intent);
     }
 
     private void send_post_word(Palabra palabra){

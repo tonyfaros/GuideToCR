@@ -97,9 +97,13 @@ public class Globales {
 
     public int return_last_id_palabra(){
         int cont = 0;
-        for (Palabra i : lista_palabras){
-            if(i.getId() > cont){
-                cont = i.getId();
+        if(lista_palabras.isEmpty())
+            return 0;
+        else {
+            for (Palabra i : lista_palabras) {
+                if (i.getId() > cont) {
+                    cont = i.getId();
+                }
             }
         }
         return cont;
@@ -107,9 +111,27 @@ public class Globales {
 
     public int return_last_id_lugar(){
         int cont = 0;
-        for (Lugar i : lista_lugares){
-            if(i.getId() > cont){
-                cont = i.getId();
+        if(lista_lugares.isEmpty())
+            return 0;
+        else {
+            for (Lugar i : lista_lugares) {
+                if (i.getId() > cont) {
+                    cont = i.getId();
+                }
+            }
+        }
+        return cont;
+    }
+
+    public int return_last_id_user(){
+        int cont = 0;
+        if(lista_usuarios.isEmpty())
+            return 0;
+        else {
+            for (Usuario i : lista_usuarios) {
+                if (i.getId() > cont) {
+                    cont = i.getId();
+                }
             }
         }
         return cont;
