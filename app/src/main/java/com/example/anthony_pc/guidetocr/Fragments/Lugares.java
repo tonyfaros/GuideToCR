@@ -6,13 +6,21 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.anthony_pc.guidetocr.Adapters.Lugar_adapter;
+import com.example.anthony_pc.guidetocr.Class.Globales;
 import com.example.anthony_pc.guidetocr.Class.Lugar;
 import com.example.anthony_pc.guidetocr.R;
 
@@ -30,6 +38,8 @@ public class Lugares extends Fragment {
     Lugar_adapter adapter;
     ListView list;
 
+    private Globales instance= Globales.getInstance();
+
 
 
     private OnFragmentInteractionListener mListener;
@@ -37,6 +47,40 @@ public class Lugares extends Fragment {
     public Lugares() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.search_menu,menu);
+        MenuItem searchItem = menu.findItem(R.id.item_search);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+    }
+
 
 
     @Override
@@ -57,9 +101,9 @@ public class Lugares extends Fragment {
         }
 
 
+        Log.e("largooo",String.valueOf(instance.get_lugares_user().size()));
 
-
-        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,List,list);
+        adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);
         return view;
 
