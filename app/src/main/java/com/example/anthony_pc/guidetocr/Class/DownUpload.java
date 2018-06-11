@@ -44,9 +44,8 @@ public class DownUpload {
     public String url_lugares = "https://guidetocr.herokuapp.com/places.json";
 
     public String url_post_users = "";
-    public String url_post_palabras = "https://guidetocr.herokuapp.com/words.json";
+    public String url_post_palabras = "https://guidetocr.herokuapp.com/words.json/";
     public String url_post_lugares = "https://guidetocr.herokuapp.com/places.json";
-
 
     public RequestQueue mQueue;
 
@@ -58,15 +57,17 @@ public class DownUpload {
         mQueue = Volley.newRequestQueue(context);
         this.contexto = context;
         get_users(url_users);
-        //get_palabras(url_palabras);
-        //get_lugares(url_lugares);
-        //post_sug_lug("Zurqui","Lluvioso","1000","Montañoso","Preparese para caminar","Ruta 32",false);
-        post_sug_pal2("Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
+        get_palabras(url_palabras);
+        get_lugares(url_lugares);
+       // post_sug_lug("Zurqui","Lluvioso","1000","Montañoso","Preparese para caminar","Ruta 32",false);
+        //post_sug_pal("Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
 
         //new download_Users().execute();
     }
 
     public void get_users(String url) {
+
+        Log.e("nombre","USERS");
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                 url, null,
@@ -76,23 +77,21 @@ public class DownUpload {
                         try {
                             for (int i = 0; i < response.length(); i++) {
 
+                                Log.e("JSON",response.toString());
 
-
-                                int id = Integer.parseInt(response.getJSONObject(i).getString("id"));
-                                String nombre = String.valueOf(response.getJSONObject(i).getString("nombre"));
-                                String correo = String.valueOf(response.getJSONObject(i).getString("correo"));
-                                String contrasena = String.valueOf(response.getJSONObject(i).getString("contrasena"));
-                                boolean admin = Boolean.parseBoolean(response.getJSONObject(i).getString("admin"));
-
-                                Log.e("nombre",nombre);
-                                Log.e("correo",correo);
-                                Log.e("contrasena",contrasena);
-                                Log.e("admin",String.valueOf(admin));
+                                String id = String.valueOf(response.getJSONObject(i).get("id"));
+                                String nombre = String.valueOf(response.getJSONObject(i).get("nombre"));
+                                String correo = String.valueOf(response.getJSONObject(i).get("email"));
+                                String contrasena = String.valueOf(response.getJSONObject(i).get("password"));
+                                String admin = String.valueOf(response.getJSONObject(i).get("admin"));
 
 
 
-                                Usuario usuario = new Usuario(id, nombre, correo, contrasena, admin);
+
+
+                                Usuario usuario = new Usuario(Integer.parseInt(id), nombre, correo, contrasena, Boolean.parseBoolean(admin));
                                 instance.agregar_usuario(usuario);
+                                Log.e("usuarios--------",String.valueOf(instance.getLista_usuarios().size()));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -105,10 +104,13 @@ public class DownUpload {
                 error.printStackTrace();
             }
         });
+        Log.e("usuarios",String.valueOf(instance.getLista_usuarios().size()));
         mQueue.add(jsonArrayRequest);
     }
 
     public void get_lugares(String url) {
+
+        Log.e("nombre","LUGARES");
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                 url, null,
@@ -117,7 +119,7 @@ public class DownUpload {
                     public void onResponse(JSONArray response) {
                         try {
                             for (int i = 0; i < response.length(); i++) {
-
+                                Log.e("JSON",response.toString());
                                 String id =  String.valueOf(response.getJSONObject(i).get("id"));
                                 String nombre = String.valueOf(response.getJSONObject(i).get("nombre"));
                                 String clima = String.valueOf(response.getJSONObject(i).get("clima"));
@@ -127,12 +129,19 @@ public class DownUpload {
                                 String ubicacion = String.valueOf(response.getJSONObject(i).get("ubicacion"));
                                 String aceptado = String.valueOf(response.getJSONObject(i).get("aceptado"));
 
+                                Log.e("id",String.valueOf(response.getJSONObject(i).get("id")));
+                                Log.e("nombre",String.valueOf(response.getJSONObject(i).get("nombre")));
+                                Log.e("clima",String.valueOf(response.getJSONObject(i).get("clima")));
+                                Log.e("cobro",String.valueOf(response.getJSONObject(i).get("tarifa")));
+                                Log.e("descripcion",String.valueOf(response.getJSONObject(i).get("descripcion")));
+
 
                                 boolean ac = Boolean.parseBoolean(aceptado);
 
 
                                 Lugar lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac);
                                 instance.agregar_lugar(lugar);
+                                Log.e("lugar--------",String.valueOf(instance.getLista_lugares().size()));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -145,10 +154,14 @@ public class DownUpload {
                 error.printStackTrace();
             }
         });
+        Log.e("lugar",String.valueOf(instance.getLista_lugares().size()));
         mQueue.add(jsonArrayRequest);
     }
 
     public void get_palabras(String url) {
+
+
+        Log.e("nombre","PALABRAS");
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                 url, null,
@@ -167,6 +180,7 @@ public class DownUpload {
 
                                 Palabra pa = new Palabra(Integer.parseInt(id), palabra, descripcion, ejemplo, Boolean.parseBoolean(aceptado));
                                 instance.agregar_palabra(pa);
+                                Log.e("palabra--------",String.valueOf(instance.getLista_palabras().size()));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -179,6 +193,7 @@ public class DownUpload {
                 error.printStackTrace();
             }
         });
+        Log.e("palabras",String.valueOf(instance.getLista_palabras().size()));
         mQueue.add(jsonArrayRequest);
     }
 
@@ -186,11 +201,11 @@ public class DownUpload {
 
         RequestQueue requestQueue = Volley.newRequestQueue(contexto);
 
-        JsonObjectRequest palabra_request = new JsonObjectRequest(Request.Method.POST, url_post_palabras,
-                null, new Response.Listener<JSONObject>() {
+        StringRequest palabra_request = new StringRequest(Request.Method.POST, url_post_palabras,
+                new Response.Listener<String>() {
 
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
 
             }
 
@@ -201,28 +216,40 @@ public class DownUpload {
             }
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
                 params.put("nombre","weiso");
-                params.put("descripcion","que weiso");
-                //params.put("ejemplo",ejemplo);
+                //params.put("descripcion","que weiso");
+                //params.put("ejemplo","muy weiso");
                 //params.put("aceptado","false");
+
+
+
                 return params;
             }
+            public String getBodyContentType()
+            {
+                return "application/json";
+            }
 
+/*
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String,String>();
                 //headers.put("Content-Type", "application/json");
                 return headers;
             }
-
+*/
         };
 
         requestQueue.add(palabra_request);
 
     }
+
+
+
+
 
     public void post_sug_pal2(final String palabra, final String descripcion, final String ejemplo, final boolean aceptado){
         try{
@@ -304,6 +331,18 @@ public class DownUpload {
                 params.put("ubicacion",ubicacion);
                 params.put("aceptado",String.valueOf(aceptado));
                 return params;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("Content-Type", "application/x-www-form-urlencoded");
+                return param;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(contexto);
