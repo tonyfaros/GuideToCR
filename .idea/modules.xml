@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GuideToCR.iml" filepath="$PROJECT_DIR$/GuideToCR.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Anthony-PC\AndroidStudioProjects\GuideToCR\app.iml" filepath="C:\Users\Anthony-PC\AndroidStudioProjects\GuideToCR\app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app-app.iml" filepath="$PROJECT_DIR$/app/app-app.iml" />
       <module fileurl="file://C:\Users\Anthony-PC\AndroidStudioProjects\GuideToCR\app\app-app.iml" filepath="C:\Users\Anthony-PC\AndroidStudioProjects\GuideToCR\app\app-app.iml" />
     </modules>
   </component>

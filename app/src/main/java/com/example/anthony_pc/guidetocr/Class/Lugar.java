@@ -1,5 +1,7 @@
 package com.example.anthony_pc.guidetocr.Class;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Anthony-PC on 29/5/2018.
  */
@@ -14,8 +16,23 @@ public class Lugar {
     private String datos;
     private String ubicacion;
     private boolean aceptado;
+    private Bitmap foto;
+    private String categoria;
 
-    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion,boolean aceptado) {
+    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado, Bitmap foto, String categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.clima = clima;
+        this.cobro = cobro;
+        this.descripcion = descripcion;
+        this.datos = datos;
+        this.ubicacion = ubicacion;
+        this.aceptado = aceptado;
+        this.foto = foto;
+        this.categoria = categoria;
+    }
+
+    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado) {
         this.id = id;
         this.nombre = nombre;
         this.clima = clima;
@@ -88,5 +105,21 @@ public class Lugar {
 
     public void setAceptado(boolean aceptado) {
         this.aceptado = aceptado;
+    }
+
+    public Bitmap getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Bitmap foto) {
+        this.foto = foto;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
