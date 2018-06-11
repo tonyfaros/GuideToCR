@@ -2,25 +2,80 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context="com.example.anthony_pc.guidetocr.Activities.MainActivity">
+    android:background="@color/colorPrimary"
+    tools:context="com.example.anthony_pc.pocketrecipe.Activites.MainActivity"
+    android:theme="@style/Widget.Design.TextInputLayout">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
         android:foregroundGravity="center_vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="154dp">
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:layout_alignTop="@+id/titulo3"
+            android:layout_toStartOf="@+id/titulo3"
+            android:fontFamily="@font/permanent_marker"
+            android:gravity="center_vertical"
+            android:text="C"
+            android:textColor="@color/com_facebook_button_background_color_pressed"
+            android:textSize="65sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.111" />
+
+        <TextView
+            android:id="@+id/titulo3"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:layout_below="@+id/image"
+            android:layout_marginEnd="14dp"
+            android:layout_toStartOf="@+id/image"
+            android:fontFamily="@font/permanent_marker"
+            android:gravity="center_vertical"
+            android:text="R"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="65sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.111" />
+
+        <TextView
+            android:id="@+id/titulo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/permanent_marker"
+            android:gravity="center_vertical"
+            android:text="Guide to"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="65sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.111" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/titulo"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="25dp"
             android:textColorHint="@android:color/white"
 
             >
@@ -54,34 +109,77 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/white"
-                android:hint="Contrasena"
+                android:hint="Contraseña"
                 android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textColorHighlight="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textColorLink="@android:color/white" />
+                android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/crearCuenta_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/crearCuenta_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="23dp" />
+        <!--
+        <ImageButton
+            android:id="@+id/facebook_button"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:background="@null"
+            android:foregroundGravity="center_vertical"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/facebook_image" />
+-->
         <Button
             android:id="@+id/iniciar_button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_below="@+id/textInputLayout3"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="28dp"
             android:background="@drawable/button_shape"
             android:onClick="ingresar"
             android:text="          Iniciar Sesión          "
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+        <Button
+            android:id="@+id/crearCuenta_button"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_above="@+id/login_button"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="26dp" />
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/button_border"
+            android:onClick="crearCuenta"
+            android:shadowColor="@null"
+            android:text="CREAR CUENTA"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignEnd="@+id/textInputLayout2"
+            android:layout_alignParentTop="true"
+            android:gravity="center" />
 
     </RelativeLayout>
 

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        getSupportActionBar().hide();
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void send_post_word(Palabra palabra){
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("https://guidetocr.herokuapp.com/words.json")
+                .baseUrl("https://guidetocr.herokuapp.com/words.json/")
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
