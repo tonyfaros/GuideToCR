@@ -62,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
-
+        emailTxt = (TextInputEditText) findViewById(R.id.correoTxt);
+        passwordTxt = (TextInputEditText) findViewById(R.id.passwordTxt);
+        emailTxt.setText("marilau63@gmail.com");
+        passwordTxt.setText("1234");
         loginButton.setReadPermissions(Arrays.asList("public_profile","email","user_birthday"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
