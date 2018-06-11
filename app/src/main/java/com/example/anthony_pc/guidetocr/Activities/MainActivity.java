@@ -191,19 +191,32 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            TextInputEditText correoTxt = (TextInputEditText) findViewById(R.id.correoTxt);
-            correoTxt.setText(email);
-            Intent intent = new Intent(this, Registrar_activity.class);
-            intent.putExtra("first_name", first_name);
-            intent.putExtra("last_name", last_name);
-            intent.putExtra("email", email);
+            if(checkEmail(email) == null){
+                Intent intent = new Intent(this, Registrar_activity.class);
+                intent.putExtra("first_name", first_name);
+                intent.putExtra("last_name", last_name);
+                intent.putExtra("email", email);
 
-            intent.putExtra("persona", profile.getProfilePictureUri(100, 100).toString());
+                //intent.putExtra("persona", profile.getProfilePictureUri(100, 100).toString());
 
-            startActivity(intent);
+                startActivity(intent);
+            }
+
+
         }else{
             Toast.makeText(this,"Perfil de facebook no existe",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public Usuario checkEmail(String email){
+        for(Usuario i: instance.getLista_usuarios()){
+            if(i.getCorreo().equals(email)){
+                instance.setUsuario_actual(i);
+                Intent intent = new Intent(this,Inicio.class);
+                startActivity(intent);
+            }
+        }
+        return null;
     }
 
 
