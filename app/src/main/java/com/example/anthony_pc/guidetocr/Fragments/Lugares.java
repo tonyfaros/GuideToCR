@@ -18,25 +18,9 @@ import com.example.anthony_pc.guidetocr.R;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Lugares.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Lugares#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Lugares extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     ArrayList<Lugar> List = new ArrayList<>();
     String[] nombre = {"RECETAS SALUDABLES","RECETAS COMIDA RÁPIDA","RECETAS DULCES", "TODAS LAS RECETAS"};
@@ -47,34 +31,19 @@ public class Lugares extends Fragment {
     ListView list;
 
 
+
+    private OnFragmentInteractionListener mListener;
+
     public Lugares() {
         // Required empty public constructor
     }
 
-    public static Lugares newInstance(String param1, String param2) {
-
-
-        Lugares fragment = new Lugares();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_lugares, container, false);
 
         list = view.findViewById(R.id.list);
@@ -93,6 +62,7 @@ public class Lugares extends Fragment {
         adapter = new Lugar_adapter(getContext(),R.layout.list_view_items_lugares,List,list);
         list.setAdapter(adapter);
         return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
