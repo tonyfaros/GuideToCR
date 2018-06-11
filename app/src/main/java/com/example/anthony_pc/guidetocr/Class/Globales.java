@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.anthony_pc.guidetocr.Fragments.Palabras;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -135,6 +136,46 @@ public class Globales {
             }
         }
         return cont;
+    }
+
+    public ArrayList<Palabra> get_palabras_user(){
+        ArrayList<Palabra> list = new ArrayList<>();
+        for(Palabra i : lista_palabras){
+            if(i.isAceptado()){
+                list.add(i);
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<Palabra> get_palabras_admin(){
+        ArrayList<Palabra> list = new ArrayList<>();
+        for(Palabra i : lista_palabras){
+            if(!i.isAceptado()){
+                list.add(i);
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<Lugar> get_lugares_user(){
+        ArrayList<Lugar> list = new ArrayList<>();
+        for(Lugar i : lista_lugares){
+            if(i.isAceptado()){
+                list.add(i);
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<Lugar> get_lugares_admin(){
+        ArrayList<Lugar> list = new ArrayList<>();
+        for(Lugar i : lista_lugares){
+            if(!i.isAceptado()){
+                list.add(i);
+            }
+        }
+        return list;
     }
 
 }
