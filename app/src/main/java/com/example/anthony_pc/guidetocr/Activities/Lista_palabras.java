@@ -42,7 +42,6 @@ public class Lista_palabras extends AppCompatActivity {
         list = findViewById(R.id.list);
 
         final ArrayList<String> lista_palabras = new ArrayList<>();
-        //Log.e("largooo",String.valueOf(instance.return_list_letter(mensaje).size()));
 
         for(Palabra i : instance.return_list_letter(mensaje)){
             lista_palabras.add(i.getPalabra());
@@ -56,19 +55,11 @@ public class Lista_palabras extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+                Intent intent = new Intent(getApplicationContext(), Palabra_activity.class);
+                intent.putExtra("palabra",lista_palabras.get(position));
+                startActivity(intent);
                 Toast.makeText(getBaseContext(),lista_palabras.get(position),Toast.LENGTH_SHORT).show();
             }
         });
-        //largoLista = instance.get_lugares_user().size();
-
-
-
-        //adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
-
-
-
     }
-
-
 }
