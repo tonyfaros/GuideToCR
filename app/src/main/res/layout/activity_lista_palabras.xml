@@ -7,4 +7,8 @@
     tools:context="com.example.anthony_pc.guidetocr.Activities.Lista_palabras"
     android:orientation="vertical">
 
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

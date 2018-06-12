@@ -187,7 +187,7 @@ public class Globales {
         for(Palabra i : lista_palabras){
             Log.e("palabra1", String.valueOf(i.getPalabra().charAt(0)));
 
-            if(i.getPalabra().charAt(0) >= letra){
+            if(i.getPalabra().charAt(0) == letra){
                 Log.e("letra", i.getPalabra());
                 list.add(i);
             }
