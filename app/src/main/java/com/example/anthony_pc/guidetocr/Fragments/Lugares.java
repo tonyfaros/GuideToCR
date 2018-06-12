@@ -100,8 +100,8 @@ public class Lugares extends ListFragment implements SearchView.OnQueryTextListe
 
         for(int i = 0;i<nombre.length;i++){
 
-            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true, BitmapFactory.decodeResource(getContext().getResources(),
-                    R.drawable.puente),category[i]));
+            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true,"",category[i], BitmapFactory.decodeResource(getContext().getResources(),
+                    R.drawable.puente),""));
         }
 
         largoLista = instance.get_lugares_user().size();

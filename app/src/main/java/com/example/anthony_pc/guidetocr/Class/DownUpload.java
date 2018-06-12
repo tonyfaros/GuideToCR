@@ -1,9 +1,11 @@
 package com.example.anthony_pc.guidetocr.Class;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,10 +26,12 @@ import org.json.JSONObject;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -130,6 +134,9 @@ public class DownUpload {
                                 String datos = String.valueOf(response.getJSONObject(i).get("datos"));
                                 String ubicacion = String.valueOf(response.getJSONObject(i).get("ubicacion"));
                                 String aceptado = String.valueOf(response.getJSONObject(i).get("aceptado"));
+                                String url = String.valueOf(response.getJSONObject(i).get("foto"));
+                                String provincia = String.valueOf(response.getJSONObject(i).get("provincia"));
+
 
                                 Log.e("id",String.valueOf(response.getJSONObject(i).get("id")));
                                 Log.e("nombre",String.valueOf(response.getJSONObject(i).get("nombre")));
@@ -139,14 +146,31 @@ public class DownUpload {
 
 
                                 boolean ac = Boolean.parseBoolean(aceptado);
+                                Lugar lugar = null;
+                                Bitmap foto = null;
 
+                                Log.e("URL--------",url);
 
-                                Lugar lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac, BitmapFactory.decodeResource(contexto.getResources(),
-                                        R.drawable.puente),"Montaña");
+                                if(url.equals("")){
+                                    lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac, url,"Montaña",BitmapFactory.decodeResource(contexto.getResources(),
+                                            R.drawable.puente),provincia);
+                                }else{
+                                    DownloadImageWithURLTask downloadImageWithURLTask = new DownloadImageWithURLTask();
+                                    foto = downloadImageWithURLTask.execute(url).get();
+                                    lugar = new Lugar(Integer.parseInt(id), nombre, clima, cobro, descripcion, datos, ubicacion, ac, url,"Montaña",foto,provincia);
+
+                                }
+
                                 instance.agregar_lugar(lugar);
-                                Log.e("lugar--------",String.valueOf(instance.getLista_lugares().size()));
+
+                                Log.e("URL--------",String.valueOf(instance.getLista_lugares().size()));
+
                             }
                         } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
                             e.printStackTrace();
                         }
                     }
@@ -198,6 +222,31 @@ public class DownUpload {
         });
         Log.e("palabras",String.valueOf(instance.getLista_palabras().size()));
         mQueue.add(jsonArrayRequest);
+    }
+
+    private static class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {
+
+        public DownloadImageWithURLTask() {
+
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String pathToFile = urls[0];
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new java.net.URL(pathToFile).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            //bmImage.setImageBitmap(result);
+        }
     }
 
     public void post_sug_pal(final String palabra, final String descripcion, final String ejemplo, final boolean aceptado){
@@ -353,85 +402,5 @@ public class DownUpload {
 
     }
 
-
-
-
-
-
-
-/*
-
-
-    private class download_Users extends AsyncTask<Void,Void,Void>{
-
-
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            for(int i =0 ; i< 5; i++) {
-                Log.e("users", "users");
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            new download_Palabras().execute();
-        }
-    }
-
-    private class download_Palabras extends AsyncTask<Void,Void,Void>{
-
-        public RequestQueue mQueue;
-        public Context context;
-
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            mQueue = Volley.newRequestQueue(context);
-            for(int i =0 ; i< 5; i++) {
-                Log.e("palabras", "palabras");
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            new download_Lugares().execute();
-        }
-    }
-
-    private class download_Lugares extends AsyncTask<Void,Void,Void>{
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            for(int i =0 ; i< 5; i++) {
-                Log.e("lugares", "lugares");
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-    }*/
+    
 }

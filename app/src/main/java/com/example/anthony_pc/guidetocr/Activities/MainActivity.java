@@ -44,6 +44,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -106,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.e("prueba","preuba");
+
         DownUpload d = new DownUpload(this);
+
+
         //Palabra p = new Palabra(1,"Weiso","Feo,malo,solo","que weiso que este lloviendo",false);
         //send_post_word(p);
         Log.e("lugar",String.valueOf(instance.getLista_lugares().size()));

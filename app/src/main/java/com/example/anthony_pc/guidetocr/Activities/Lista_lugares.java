@@ -55,8 +55,8 @@ public class Lista_lugares extends AppCompatActivity {
 
         for(int i = 0;i<nombre.length;i++){
 
-            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true, BitmapFactory.decodeResource(getBaseContext().getResources(),
-                    R.drawable.puente),category[i]));
+            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true,"",category[i], BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.drawable.puente),""));
         }
 
         largoLista = instance.get_lugares_user().size();

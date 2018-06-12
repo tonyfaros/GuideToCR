@@ -16,10 +16,12 @@ public class Lugar {
     private String datos;
     private String ubicacion;
     private boolean aceptado;
-    private Bitmap foto;
+    private String url;
     private String categoria;
+    private Bitmap fotoDef;
+    private String provincia;
 
-    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado, Bitmap foto, String categoria) {
+    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado, String url, String categoria,Bitmap fotoDef, String provincia) {
         this.id = id;
         this.nombre = nombre;
         this.clima = clima;
@@ -28,11 +30,13 @@ public class Lugar {
         this.datos = datos;
         this.ubicacion = ubicacion;
         this.aceptado = aceptado;
-        this.foto = foto;
+        this.url = url;
         this.categoria = categoria;
+        this.fotoDef = fotoDef;
+        this.provincia = provincia;
     }
 
-    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado) {
+    /*public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado) {
         this.id = id;
         this.nombre = nombre;
         this.clima = clima;
@@ -42,7 +46,7 @@ public class Lugar {
         this.ubicacion = ubicacion;
         this.aceptado = aceptado;
     }
-
+*/
     public int getId() {
         return id;
     }
@@ -107,12 +111,12 @@ public class Lugar {
         this.aceptado = aceptado;
     }
 
-    public Bitmap getFoto() {
-        return foto;
+    public String getUrl() {
+        return url;
     }
 
-    public void setFoto(Bitmap foto) {
-        this.foto = foto;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getCategoria() {
@@ -121,5 +125,21 @@ public class Lugar {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public Bitmap getFotoDef() {
+        return fotoDef;
+    }
+
+    public void setFotoDef(Bitmap fotoDef) {
+        this.fotoDef = fotoDef;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
     }
 }
