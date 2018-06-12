@@ -195,4 +195,15 @@ public class Globales {
         return list;
     }
 
+    public Palabra get_pal_string(String palabra){
+
+        for(Palabra i : lista_palabras){
+            if(i.getPalabra().equals(palabra))
+                return i;
+        }
+
+        return null;
+
+    }
+
 }

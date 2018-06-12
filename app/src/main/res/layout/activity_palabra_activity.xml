@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="60dp"
                 android:layout_weight="1"
                 android:background="@drawable/seccion_lugar"
                 android:gravity="center_vertical"
