@@ -71,13 +71,21 @@ public class Lista_palabras extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String data=(String)parent.getItemAtPosition(position);
+
                 Intent intent = new Intent(getApplicationContext(), Palabra_activity.class);
-                intent.putExtra("palabra",lista_palabras.get(position));
+                intent.putExtra("palabra",data);
                 startActivity(intent);
                 //Toast.makeText(getBaseContext(),lista_palabras.get(position),Toast.LENGTH_SHORT).show();
             }
         });
     }
+/*
+    public String search_word(String word){
+        for(String i : lista_palabras){
+            if(i.equals(lista_palabras))
+        }
+    }*/
     @Override
     public boolean onSupportNavigateUp(){
         finish();
@@ -111,19 +119,20 @@ public class Lista_palabras extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                //adapter.getFilter().filter(s);
-                ArrayList<String> listaTemp = new ArrayList<>();
+                adapter.getFilter().filter(s);
+                /*ArrayList<String> listaTemp = new ArrayList<>();
                 if(s == null || s.trim().isEmpty()){
                     listaTemp = listDef;
                     return false;
                 }
                 for(String i : listDef){
+                    Log.e("prueba--","prueba--");
                     if(i.contains(s.toLowerCase())){
                         listaTemp.add(i);
                     }
                 }
                 adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,listaTemp);
-                list.setAdapter(adapter);
+                list.setAdapter(adapter);*/
                 return false;
             }
         });
