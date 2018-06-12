@@ -65,7 +65,11 @@
             android:name=".Activities.InicioAdmin"
             android:label="@string/title_activity_inicio_admin"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Lista_palabras"></activity>
+        <activity android:name=".Activities.Lista_palabras" />
+        <activity
+            android:name=".Activities.Sugerencias"
+            android:label="@string/title_activity_sugerencias"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
