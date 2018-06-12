@@ -4,6 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context="com.example.anthony_pc.guidetocr.Activities.SPalabraActivity">
+
+
+    <View
+        android:id="@+id/focus_view"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <requestFocus />
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/nombreLugarTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Palabra*" />
+
+        <EditText
+            android:id="@+id/palabraTxt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ems="10" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:text="Definicion" />
+
+        <EditText
+            android:id="@+id/definicionTxt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ems="10" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:text="Ejemplo" />
+
+        <EditText
+            android:id="@+id/ejemploTxt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ems="10" />
+
+
+        <Button
+            android:id="@+id/enviar"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/button_shape_primary"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="agarrarDatos"
+            android:text="          ENVIAR          "
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="410dp" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -4,10 +4,181 @@
     android:layout_height="match_parent"
     tools:context="com.example.anthony_pc.guidetocr.Fragments.Palabras">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:columnCount="3">
+
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_red_dark"
+            android:text="A"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_blue_dark"
+            android:text="B"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="C"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button18"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#F4D03F"
+            android:text="D"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button17"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#95A5A6"
+            android:text="E"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#5B2C6F"
+            android:text="F"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#D88FBD"
+            android:text="G"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#E82E69  "
+            android:text="H"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#2EE8DA  "
+            android:text="I"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button22"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#5F3A3A  "
+            android:text="J"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_orange_dark"
+            android:text="K"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button20"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#9C428C  "
+            android:text="L"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button19"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#A93226  "
+            android:text="M"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button25"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#A93226  "
+            android:text="N"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button24"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#A93226  "
+            android:text="O"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+        <Button
+            android:id="@+id/button23"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#A93226  "
+            android:text="P"
+            android:textColor="@android:color/white"
+            android:textSize="80sp" />
+
+    </GridLayout> -->
+
+    <GridView
+        android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:numColumns="3" />
 </FrameLayout>

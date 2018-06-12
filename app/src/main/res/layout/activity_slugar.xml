@@ -4,9 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context="com.example.anthony_pc.guidetocr.Activities.SLugarActivity">
 
-    <View android:layout_width="fill_parent" android:id="@+id/focus_view" android:layout_height="0dp" android:focusable="true" android:focusableInTouchMode="true"><requestFocus/></View>
+    <View
+        android:id="@+id/focus_view"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <requestFocus />
+    </View>
 
     <ScrollView
         android:id="@+id/scroll"
@@ -140,8 +149,8 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@android:drawable/ic_menu_gallery"
-                android:scaleType="centerInside"
-                android:onClick="agarrarImagenGaleria"/>
+                android:onClick="agarrarImagenGaleria"
+                android:scaleType="centerInside" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -160,7 +169,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/crear_receta"
+                android:id="@+id/enviar"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
@@ -171,12 +180,12 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/button_shape_primary"
                 android:gravity="center_vertical|center_horizontal"
+                android:onClick="agarrarDatos"
                 android:text="          ENVIAR          "
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="72dp"
-                tools:layout_editor_absoluteY="410dp"
-                android:onClick="agarrarDatos"/>
+                tools:layout_editor_absoluteY="410dp" />
 
         </LinearLayout>
 
