@@ -38,7 +38,7 @@ public class Lista_palabras extends AppCompatActivity {
         list = findViewById(R.id.list);
 
 
-        largoLista = instance.get_lugares_user().size();
+        //largoLista = instance.get_lugares_user().size();
 
         Log.e("largooo",String.valueOf(instance.get_lugares_user().size()));
 
