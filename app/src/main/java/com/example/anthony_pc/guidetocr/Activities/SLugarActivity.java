@@ -46,6 +46,8 @@ public class SLugarActivity extends AppCompatActivity {
     }
 
     public void buttonAgregar(View view){
+
+        if(suge)
         String nombre,descripcion,provincia,datos,ubicacion,clima;
         nombre = nombreET.getText().toString();
         descripcion = descripcionET.getText().toString();

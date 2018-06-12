@@ -1,11 +1,9 @@
 package com.example.anthony_pc.guidetocr.Activities;
 
-<<<<<<< HEAD
+
 import android.content.Intent;
-=======
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
->>>>>>> c8623b027eb24373c988b21204604532dc5bbeb7
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
