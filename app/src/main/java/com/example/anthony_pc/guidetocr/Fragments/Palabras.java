@@ -26,8 +26,8 @@ public class Palabras extends Fragment {
     Dic_adapter adapter;
     GridView grid;
     ArrayList<ItemDic> List = new ArrayList<>();
-    String[] letra = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    String[] color = {"#D1352B","#5DADE2","#58D68D","#F4D03F","#95A5A6","#5B2C6F","#D88FBD","#E82E69","#2EE8DA","#5F3A3A","#E67E22","#D1352B","#9C428C","#A93226","#16A085","#A93226","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B"};
+    String[] letra = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z","abc"};
+    String[] color = {"#D1352B","#5DADE2","#58D68D","#F4D03F","#95A5A6","#5B2C6F","#D88FBD","#E82E69","#2EE8DA","#5F3A3A","#E67E22","#D1352B","#9C428C","#A93226","#16A085","#A93226","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B"};
 
 
 

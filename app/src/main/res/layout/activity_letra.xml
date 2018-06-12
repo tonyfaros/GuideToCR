@@ -4,24 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
     tools:context="com.example.anthony_pc.guidetocr.LetraActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:elevation="19dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/letra"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@android:color/holo_red_dark"
+            android:elevation="12dp"
             android:text="A"
             android:textColor="@android:color/white"
-            android:textSize="80sp" />
+            android:textSize="80sp"
+            android:textAllCaps="false"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
