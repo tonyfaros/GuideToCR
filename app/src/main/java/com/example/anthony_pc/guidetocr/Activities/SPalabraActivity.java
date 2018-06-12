@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.anthony_pc.guidetocr.Class.Globales;
 import com.example.anthony_pc.guidetocr.Class.Palabra;
@@ -35,7 +36,7 @@ public class SPalabraActivity extends AppCompatActivity {
         definicion = palabraET.getText().toString();
         ejemplo = palabraET.getText().toString();
 
-        if(palabra.equals("") || definicion.equals("") || ejemplo.equals("")){
+        if(palabra.equals(" ") || definicion.equals("") || ejemplo.equals("")){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Aviso")
                     .setMessage("Complete los datos por favor")
@@ -48,6 +49,7 @@ public class SPalabraActivity extends AppCompatActivity {
         }else{
             Palabra p = new Palabra(instance.return_last_id_palabra(),palabra,definicion,ejemplo,false);
             instance.agregar_palabra(p);
+            Toast.makeText(getBaseContext(),"Sugerencia enviada",Toast.LENGTH_SHORT).show();
             finish();
         }
     }

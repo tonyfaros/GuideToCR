@@ -21,7 +21,8 @@ public class Lugar {
     private Bitmap fotoDef;
     private String provincia;
 
-    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado, String url, String categoria,Bitmap fotoDef, String provincia) {
+    public Lugar(int id, String nombre, String clima, String cobro, String descripcion, String datos, String ubicacion, boolean aceptado, String url,
+                 String categoria,Bitmap fotoDef, String provincia) {
         this.id = id;
         this.nombre = nombre;
         this.clima = clima;

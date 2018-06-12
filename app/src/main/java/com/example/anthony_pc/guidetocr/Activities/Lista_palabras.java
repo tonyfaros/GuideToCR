@@ -71,6 +71,7 @@ public class Lista_palabras extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String data=(String)parent.getItemAtPosition(position);
 
                 Intent intent = new Intent(getApplicationContext(), Palabra_activity.class);
