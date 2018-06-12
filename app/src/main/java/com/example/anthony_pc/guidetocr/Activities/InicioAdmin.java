@@ -75,18 +75,26 @@ public class InicioAdmin extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            getSupportActionBar().setTitle("Guide To CR");
             // Handle the camera action
+            fragment = new InicioFragment();
+            fragmentManager.popBackStack();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
         } else if (id == R.id.nav_place) {
             Intent intent = new Intent(this,Lista_lugares.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_diccionario) {
+            getSupportActionBar().setTitle("Diccionario");
             fragment = new Palabras();
             fragmentManager.beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
 
         } else if (id == R.id.nav_sugerencia) {
+            getSupportActionBar().setTitle("Sugerencias");
 
         } else if (id == R.id.nav_exit) {
             LoginManager.getInstance().logOut();
@@ -109,10 +117,6 @@ public class InicioAdmin extends AppCompatActivity
     public void lugares(View view){
         Intent intent = new Intent(this,Lista_lugares.class);
         startActivity(intent);
-        /*fragment = new Lugares();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();*/
     }
 
     public void diccionario(View view){
