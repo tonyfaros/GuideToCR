@@ -39,17 +39,21 @@ public class Lista_palabras extends AppCompatActivity {
         list = findViewById(R.id.list);
 
         ArrayList<String> lista_palabras = new ArrayList<>();
+        //Log.e("largooo",String.valueOf(instance.return_list_letter(mensaje).size()));
 
         for(Palabra i : instance.return_list_letter(mensaje)){
             lista_palabras.add(i.getPalabra());
+            Log.e("palabra--",i.getPalabra());
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Lista_palabras.this,android.R.layout.simple_list_item_1,lista_palabras);
+        Log.e("largooo",String.valueOf(lista_palabras.size()));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,lista_palabras);
         list.setAdapter(adapter);
 
 
         //largoLista = instance.get_lugares_user().size();
 
-        Log.e("largooo",String.valueOf(lista_palabras.size()));
+
 
         //adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
 
