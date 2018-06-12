@@ -12,6 +12,6 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Sugerir Lugar"
+        android:title="Sugerir"
         app:showAsAction="never" />
 </menu>

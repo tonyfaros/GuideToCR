@@ -33,7 +33,7 @@ public class Lista_palabras extends AppCompatActivity {
     ArrayList<String> listDef = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
-
+    ArrayList<String> lista_palabras = new ArrayList<>();
 
     private Globales instance= Globales.getInstance();
 
@@ -42,7 +42,7 @@ public class Lista_palabras extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_palabras);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ArrayList<String> lista_palabras = new ArrayList<>();
+
         String mensaje;
         Intent intent = getIntent();
         mensaje = intent.getStringExtra("mensaje");
@@ -128,5 +128,22 @@ public class Lista_palabras extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this,SPalabraActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

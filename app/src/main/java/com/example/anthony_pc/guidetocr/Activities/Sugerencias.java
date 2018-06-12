@@ -1,5 +1,6 @@
 package com.example.anthony_pc.guidetocr.Activities;
 
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,9 +20,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.example.anthony_pc.guidetocr.Fragments.SugerenciaFragment;
 import com.example.anthony_pc.guidetocr.R;
 
-public class Sugerencias extends AppCompatActivity {
+public class Sugerencias extends AppCompatActivity implements SugerenciaFragment.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -37,6 +39,7 @@ public class Sugerencias extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    String mensaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,11 @@ public class Sugerencias extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**
@@ -132,14 +140,29 @@ public class Sugerencias extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            SugerenciaFragment fragment = new SugerenciaFragment();
+
+            Bundle bundle = new Bundle();
+
+            bundle.putString("mensaje",mensaje);
+            bundle.putString("receta",mensaje);
+
+            switch (position){
+                case 0:
+                    bundle.putString("orientacion", "list");
+                    break;
+                case 1:
+                    bundle.putString("orientacion", "grid");
+                    break;
+
+            }
+            fragment.setArguments(bundle);
+            return fragment;
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
     }
