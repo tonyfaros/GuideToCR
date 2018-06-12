@@ -48,7 +48,7 @@ public class Lugar_adapter extends ArrayAdapter {
 
 
         textView.setText(lista_lugares.get(position).getNombre());
-        imageView.setImageBitmap(lista_lugares.get(position).getFoto());
+        imageView.setImageBitmap(lista_lugares.get(position).getFotoDef());
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
