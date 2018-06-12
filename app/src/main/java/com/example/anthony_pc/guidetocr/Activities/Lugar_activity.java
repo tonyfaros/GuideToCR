@@ -47,7 +47,7 @@ public class Lugar_activity extends AppCompatActivity {
             Log.e("error","error");
         }
 
-        if(getIntent().getExtras().getString("mensaje")!= null){
+        if(getIntent().getExtras().getString("mensaje") != null){
 
             lugar = instance.get_lugar(Integer.parseInt(getIntent().getStringExtra("mensaje")));
             Log.e("lugar1111111",getIntent().getExtras().getString("mensaje"));
@@ -57,23 +57,30 @@ public class Lugar_activity extends AppCompatActivity {
             climaTV.setText(lugar.getClima());
             tarifaTV.setText(lugar.getCobro());
             descripcionTV.setText(lugar.getDescripcion());
-            datosTV.setText(lugar.getDatos());
+            //datosTV.setText(lugar.getDatos());
 
          }
 
 
 
 
-        //lugar = instance.get_lugar(Integer.parseInt(getIntent().getStringExtra("mensaje")));
-        //Log.e("lugar1111111",lugar.getNombre());
-        /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         lay_datos = (LinearLayout) findViewById(R.id.datos_layout);
 
-        datos.add("hola");
-        datos.add("como");
-        datos.add("estas");
-        datos.add("?");
-        //populateDatos();*/
+        getDatosList(lugar.getDatos().split(","));
+        //datos.add("como");
+        //datos.add("estas");
+        //datos.add("?");
+        populateDatos();
+
+    }
+
+    public void getDatosList(String[] datosList){
+
+        for(String i: datosList){
+            datos.add(i);
+        }
 
     }
 
