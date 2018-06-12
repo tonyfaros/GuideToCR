@@ -3,6 +3,7 @@ package com.example.anthony_pc.guidetocr.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class Dic_adapter extends ArrayAdapter {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.e("aqui","aquiiiiii");
                 Intent intent = new Intent();
                 intent.setClass(context, Lista_palabras.class);
                 intent.putExtra("mensaje", lista_letras.get(i).getLetra()); //Optional parameters/
