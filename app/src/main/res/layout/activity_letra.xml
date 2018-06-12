@@ -14,7 +14,7 @@
         android:elevation="19dp"
         android:orientation="vertical">
 
-        <Button
+        <TextView
             android:id="@+id/letra"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -22,10 +22,11 @@
             android:layout_marginTop="10dp"
             android:background="@android:color/holo_red_dark"
             android:elevation="12dp"
+            android:gravity="center_vertical|center"
             android:text="A"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:textSize="80sp"
-            android:textAllCaps="false"/>
+            android:textSize="80sp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

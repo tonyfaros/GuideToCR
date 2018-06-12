@@ -47,7 +47,7 @@ public class Dic_adapter extends ArrayAdapter {
 
         v = inflater.inflate(R.layout.activity_letra, null);
 
-        Button button = v.findViewById(R.id.letra);
+        TextView button = v.findViewById(R.id.letra);
         //ImageView imageView = v.findViewById(R.id.color);
 
 
