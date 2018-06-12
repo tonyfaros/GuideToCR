@@ -6,4 +6,108 @@
     android:layout_height="match_parent"
     tools:context="com.example.anthony_pc.guidetocr.Activities.Palabra_activity">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/autour_one"
+                    android:gravity="center_vertical"
+                    android:maxWidth="200dp"
+                    android:text="Manuel Antonio"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/title_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/seccion_lugar"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="  Definicion"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/descripcion_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quam turpis, malesuada luctus dolor vel, vehicula vestibulum justo. Cras neque nisl, imperdiet finibus gravida a, viverra id erat. Fusce feugiat non elit at malesuada. Cras a tempus justo. Sed fermentum ornare ligula, sit amet ultrices leo efficitur auctor. Vivamus consectetur mi in metus aliquam varius. Nam non libero eget neque venenatis gravida. Sed cursus lacus ac fermentum rhoncus. Mauris luctus molestie semper. Vestibulum vestibulum lacinia est. Suspendisse eget elit maximus, lacinia lorem a, hendrerit sem."
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/title_datos"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/seccion_lugar"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="  Ejemplo"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ejemplo_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quam turpis, malesuada luctus dolor vel, vehicula vestibulum justo. Cras neque nisl, imperdiet finibus gravida a, viverra id erat. Fusce feugiat non elit at malesuada. Cras a tempus justo. Sed fermentum ornare ligula, sit amet ultrices leo efficitur auctor. Vivamus consectetur mi in metus aliquam varius. Nam non libero eget neque venenatis gravida. Sed cursus lacus ac fermentum rhoncus. Mauris luctus molestie semper. Vestibulum vestibulum lacinia est. Suspendisse eget elit maximus, lacinia lorem a, hendrerit sem."
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/title_notas"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/seccion_lugar"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="  Ubicacion"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
