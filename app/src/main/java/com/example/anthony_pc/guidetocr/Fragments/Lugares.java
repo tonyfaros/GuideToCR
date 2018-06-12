@@ -61,7 +61,7 @@ public class Lugares extends ListFragment implements SearchView.OnQueryTextListe
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getActivity();
-        setHasOptionsMenu(true);
+
     }
 
     @Override

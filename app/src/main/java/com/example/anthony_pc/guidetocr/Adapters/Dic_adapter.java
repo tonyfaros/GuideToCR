@@ -51,6 +51,8 @@ public class Dic_adapter extends ArrayAdapter {
 
         button.setText(lista_letras.get(position).getLetra());
         button.setBackgroundColor(Color.parseColor(lista_letras.get(position).getColor()));
+        if(position == 0)
+            button.setTextSize(60);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

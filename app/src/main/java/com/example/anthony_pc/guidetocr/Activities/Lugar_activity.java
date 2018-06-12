@@ -3,6 +3,8 @@ package com.example.anthony_pc.guidetocr.Activities;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +32,8 @@ public class Lugar_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lugar_activity);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nombreTV = findViewById(R.id.nombre);
         provinciaTV = findViewById(R.id.provincia);
@@ -106,10 +110,14 @@ public class Lugar_activity extends AppCompatActivity {
 
         for(int i = 0; i<datos.size();i++){
             final TextView dato = new TextView(this);
-            dato.setText("•   " + datos.get(i));
+            dato.setText("   " + datos.get(i));
             dato.setTextColor(Color.parseColor("#000000"));
             dato.setId(i);
-            dato.setCompoundDrawablesWithIntrinsicBounds( R.drawable.dot_icon, 0, 0, 0);
+
+            Drawable img = ContextCompat.getDrawable(getApplicationContext(),R.drawable.dot_icon);
+            img.setBounds(0, 0, 95, 95);
+            dato.setCompoundDrawables(img, null, null, null);
+            //dato.setCompoundDrawablesWithIntrinsicBounds( R.drawable.dot_icon, 0, 0, 0);
             lay_datos.addView(dato);
 
         }

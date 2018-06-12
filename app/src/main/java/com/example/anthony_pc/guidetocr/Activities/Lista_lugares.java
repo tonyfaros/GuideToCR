@@ -1,12 +1,15 @@
 package com.example.anthony_pc.guidetocr.Activities;
 
+import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,6 +48,7 @@ public class Lista_lugares extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_lugares);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         list = findViewById(R.id.list);
 
@@ -61,6 +65,21 @@ public class Lista_lugares extends AppCompatActivity {
 
         adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
