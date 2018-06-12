@@ -33,8 +33,8 @@ public class SPalabraActivity extends AppCompatActivity {
 
 
         try{
-            String mensaje = getArguments().getString("sugerencia");
-            Log.e("sugerencia1111111",mensaje);
+            //String mensaje = getArguments().getString("sugerencia");
+            //Log.e("sugerencia1111111",mensaje);
             sugerencia = true;
         }catch (Exception e){
             sugerencia = false;
@@ -68,7 +68,7 @@ public class SPalabraActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(),"Sugerencia enviada",Toast.LENGTH_SHORT).show();
             finish();
         }
->>>>>>> c8623b027eb24373c988b21204604532dc5bbeb7
+
     }
 
 
