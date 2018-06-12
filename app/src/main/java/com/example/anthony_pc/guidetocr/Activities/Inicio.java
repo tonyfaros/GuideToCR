@@ -86,7 +86,10 @@ public class Inicio extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setCancelable(false);
             builder.setMessage("¿Desea salir de la aplicacion?");
@@ -105,9 +108,10 @@ public class Inicio extends AppCompatActivity
                 }
             });
             AlertDialog alert = builder.create();
-            alert.show();
+            alert.show();}
 
     }
+
 
 
 

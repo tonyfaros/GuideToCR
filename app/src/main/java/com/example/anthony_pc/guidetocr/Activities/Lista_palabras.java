@@ -35,7 +35,7 @@ public class Lista_palabras extends AppCompatActivity {
 
     ArrayList<String> lista_palabras = new ArrayList<>();
 
-    private Globales instance= Globales.getInstance();
+    private Globales instance = Globales.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
