@@ -76,8 +76,11 @@ public class Inicio extends AppCompatActivity
         try {
             nombreTxt.setText(instance.getUsuario_actual().getNombre());
             correoTxt.setText(instance.getUsuario_actual().getCorreo());
+            if(instance.getUsuario_actual().isAdmin())
+                profile_image.setImageDrawable(getResources().getDrawable(R.drawable.images));
+            else
+                profile_image.setImageDrawable(getResources().getDrawable(R.drawable.manati));
 
-            //profile_image.setImageBitmap(instance.getUsuario_actual().getFoto());
 
         } catch (NullPointerException e) {
 

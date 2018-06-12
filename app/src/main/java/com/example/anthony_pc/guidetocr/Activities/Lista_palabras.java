@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.anthony_pc.guidetocr.Adapters.Lugar_adapter;
@@ -17,10 +18,10 @@ import java.util.ArrayList;
 public class Lista_palabras extends AppCompatActivity {
 
 
-    Lugar_adapter adapter;
+
     ListView list;
 
-    private static ArrayList<Palabra> lista_palabras = new ArrayList<>();
+
 
     private Globales instance= Globales.getInstance();
 
@@ -37,13 +38,21 @@ public class Lista_palabras extends AppCompatActivity {
         setTitle("Palabras");
         list = findViewById(R.id.list);
 
+        ArrayList<String> lista_palabras = new ArrayList<>();
+
+        for(Palabra i : instance.return_list_letter(mensaje)){
+            lista_palabras.add(i.getPalabra());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Lista_palabras.this,android.R.layout.simple_list_item_1,lista_palabras);
+        list.setAdapter(adapter);
+
 
         //largoLista = instance.get_lugares_user().size();
 
-        Log.e("largooo",String.valueOf(instance.get_lugares_user().size()));
+        Log.e("largooo",String.valueOf(lista_palabras.size()));
 
-        adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
-        list.setAdapter(adapter);
+        //adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
+
 
 
     }
