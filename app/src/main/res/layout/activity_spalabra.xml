@@ -79,7 +79,7 @@
             android:layout_marginTop="45dp"
             android:background="@drawable/button_shape_primary"
             android:gravity="center_vertical|center_horizontal"
-            android:onClick="agarrarDatos"
+            android:onClick="buttonAgregar"
             android:text="          ENVIAR          "
             android:textColor="@android:color/white"
             android:textSize="18sp"

@@ -137,8 +137,6 @@
                 android:ems="10" />
 
 
-
-
             <Button
                 android:id="@+id/enviar"
                 android:layout_width="wrap_content"
@@ -151,7 +149,7 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/button_shape_primary"
                 android:gravity="center_vertical|center_horizontal"
-                android:onClick="agarrarDatos"
+                android:onClick="buttonAgregar"
                 android:text="          ENVIAR          "
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
