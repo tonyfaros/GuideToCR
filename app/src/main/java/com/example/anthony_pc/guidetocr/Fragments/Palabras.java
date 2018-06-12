@@ -18,29 +18,15 @@ import com.example.anthony_pc.guidetocr.R;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Palabras.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Palabras#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Palabras extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    Adapter adapter;
+    Dic_adapter adapter;
     GridView grid;
     ArrayList<ItemDic> List = new ArrayList<>();
-    String[] letra = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    //int[] color = {R.drawable.vegetales,R.drawable.comida_rapida,R.drawable.postres,R.drawable.carne};
+    String[] letra = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    String[] color = {"#D1352B","#5DADE2","#58D68D","#F4D03F","#95A5A6","#5B2C6F","#D88FBD","#E82E69","#2EE8DA","#5F3A3A","#E67E22","#D1352B","#9C428C","#A93226","#16A085","#A93226","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B","#D1352B"};
 
 
 
@@ -51,22 +37,10 @@ public class Palabras extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
-    public static Palabras newInstance(String param1, String param2) {
-        Palabras fragment = new Palabras();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -82,12 +56,12 @@ public class Palabras extends Fragment {
 
         for(int i = 0;i<letra.length;i++){
 
-            List.add(new ItemDic(letra[i],"abc"));
+            List.add(new ItemDic(letra[i],color[i]));
         }
 
 
         adapter = new Dic_adapter(getContext(),R.layout.activity_letra,List,grid);
-        //grid.setAdapter(adapter);
+        grid.setAdapter(adapter);
 
 
         return view;

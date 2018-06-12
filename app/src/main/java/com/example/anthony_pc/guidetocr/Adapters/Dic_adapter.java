@@ -2,11 +2,13 @@ package com.example.anthony_pc.guidetocr.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -41,13 +43,14 @@ public class Dic_adapter extends ArrayAdapter {
         View v = convertView;
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        v = inflater.inflate(R.layout.list_view_items_lugares, null);
+        v = inflater.inflate(R.layout.activity_letra, null);
 
-        TextView textView = v.findViewById(R.id.letra);
+        Button button = v.findViewById(R.id.letra);
         //ImageView imageView = v.findViewById(R.id.color);
 
 
-        textView.setText(lista_letras.get(position).getLetra());
+        button.setText(lista_letras.get(position).getLetra());
+        button.setBackgroundColor(Color.parseColor(lista_letras.get(position).getColor()));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
