@@ -3,6 +3,8 @@ package com.example.anthony_pc.guidetocr.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.anthony_pc.guidetocr.R;
+
 public class SPalabraActivity extends AppCompatActivity {
 
     @Override

@@ -2,6 +2,7 @@ package com.example.anthony_pc.guidetocr.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ public class Lugar_adapter extends ArrayAdapter {
     private ArrayList<Lugar> lista_lugares = new ArrayList<>();
     Context context;
     ListView listView;
+
+
 
     public Lugar_adapter(Context context, int textViewResourceId, ArrayList<Lugar> lista_lugares, ListView listView) {
         super(context,0,lista_lugares);
@@ -50,9 +53,12 @@ public class Lugar_adapter extends ArrayAdapter {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //Log.e("position",listView.getItemAtPosition(i).toString());
+                Log.e("positio2",String.valueOf(lista_lugares.get(i).getId()));
+
                 Intent intent = new Intent();
                 intent.setClass(context, Lugar_activity.class);
-                intent.putExtra("mensaje", lista_lugares.get(i).getCategoria()); //Optional parameters/
+                intent.putExtra("mensaje", String.valueOf(lista_lugares.get(i).getId())); //Optional parameters/
                 context.startActivity(intent);
             }
         });
