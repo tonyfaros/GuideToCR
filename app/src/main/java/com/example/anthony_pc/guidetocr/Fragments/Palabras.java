@@ -12,6 +12,7 @@ import android.widget.Adapter;
 import android.widget.GridView;
 
 import com.example.anthony_pc.guidetocr.Adapters.Dic_adapter;
+import com.example.anthony_pc.guidetocr.Class.Globales;
 import com.example.anthony_pc.guidetocr.Class.ItemDic;
 import com.example.anthony_pc.guidetocr.Class.Lugar;
 import com.example.anthony_pc.guidetocr.R;
@@ -36,10 +37,12 @@ public class Palabras extends Fragment {
         // Required empty public constructor
     }
 
+    private Globales instance= Globales.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance.return_list_letter("C");
         if (getArguments() != null) {
         }
     }

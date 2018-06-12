@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         instance.setListNull();
 
+
+
         getSupportActionBar().hide();
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
@@ -109,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
         //send_post_word(p);
         Log.e("lugar",String.valueOf(instance.getLista_lugares().size()));
         Log.e("pal",String.valueOf(instance.getLista_palabras().size()));
+
+
 
     }
 

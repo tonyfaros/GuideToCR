@@ -62,14 +62,15 @@ public class Lista_lugares extends AppCompatActivity {
         adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu,menu);
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.item_search).getActionView();
+        //SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem menuItem = menu.findItem(R.id.item_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -79,6 +80,7 @@ public class Lista_lugares extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                //adapter.getFilter().filter(s);
                 ArrayList<Lugar> listaTemp = new ArrayList<>();
                 if(s == null || s.trim().isEmpty()){
                     resetSearch();
@@ -92,11 +94,11 @@ public class Lista_lugares extends AppCompatActivity {
                 adapter = new Lugar_adapter(getApplicationContext(),R.layout.list_view_items_lugares,listaTemp,list);
                 list.setAdapter(adapter);
 
-                return true;
+                return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
-    }*/
+    }
     public void resetSearch(){
         adapter = new Lugar_adapter(this,R.layout.list_view_items_lugares,instance.get_lugares_user(),list);
         list.setAdapter(adapter);

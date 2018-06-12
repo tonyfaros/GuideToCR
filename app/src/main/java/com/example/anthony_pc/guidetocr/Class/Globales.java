@@ -178,4 +178,21 @@ public class Globales {
         return list;
     }
 
+    public ArrayList<Palabra> return_list_letter(String letter){
+        char letra = letter.charAt(0);
+        Log.e("letra", letter);
+        Log.e("letra1", String.valueOf(letra));
+
+        ArrayList<Palabra> list = new ArrayList<>();
+        for(Palabra i : lista_palabras){
+            Log.e("palabra1", String.valueOf(i.getPalabra().charAt(0)));
+
+            if(i.getPalabra().charAt(0) >= letra){
+                Log.e("letra", i.getPalabra());
+                list.add(i);
+            }
+        }
+        return list;
+    }
+
 }

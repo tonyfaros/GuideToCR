@@ -75,7 +75,7 @@
                         android:scaleType="fitXY" />
 
                     <TextView
-                        android:id="@+id/porciones"
+                        android:id="@+id/provincia"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
@@ -100,7 +100,7 @@
                         android:scaleType="fitXY" />
 
                     <TextView
-                        android:id="@+id/duracion"
+                        android:id="@+id/clima"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -124,7 +124,7 @@
                         android:scaleType="fitXY" />
 
                     <TextView
-                        android:id="@+id/costo"
+                        android:id="@+id/tarifa"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
