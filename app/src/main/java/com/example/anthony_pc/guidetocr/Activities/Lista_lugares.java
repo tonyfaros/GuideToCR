@@ -50,6 +50,8 @@ public class Lista_lugares extends AppCompatActivity {
         setContentView(R.layout.activity_lista_lugares);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        setTitle("Lugares");
         list = findViewById(R.id.list);
 
 

@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(getApplicationContext(), "Error no se por que",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -131,8 +131,12 @@ public class MainActivity extends AppCompatActivity {
         Log.e("usuar",String.valueOf(instance.getLista_usuarios().size()));
         Usuario user = checkLogin(emailTxt.getText().toString(), passwordTxt.getText().toString());
         if( user != null){
-            Intent intent = new Intent(this, Inicio.class);
             instance.setUsuario_actual(user);
+            Intent intent;
+            if(instance.getUsuario_actual().isAdmin())
+                intent = new Intent(this, InicioAdmin.class);
+            else
+                intent = new Intent(this, Inicio.class);
             startActivity(intent);
             finish();
         }else {

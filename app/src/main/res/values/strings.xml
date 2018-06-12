@@ -20,4 +20,5 @@
         <item>Templado</item>
         <item>Precipitación</item>
     </string-array>
+    <string name="title_activity_inicio_admin">InicioAdmin</string>
 </resources>

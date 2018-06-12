@@ -60,7 +60,12 @@
         <activity android:name=".Activities.SLugarActivity" />
         <activity android:name=".Activities.SPalabraActivity" />
         <activity android:name=".Activities.Lista_lugares" />
-        <activity android:name=".LetraActivity"></activity>
+        <activity android:name=".LetraActivity" />
+        <activity
+            android:name=".Activities.InicioAdmin"
+            android:label="@string/title_activity_inicio_admin"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.Lista_palabras"></activity>
     </application>
 
 </manifest>
