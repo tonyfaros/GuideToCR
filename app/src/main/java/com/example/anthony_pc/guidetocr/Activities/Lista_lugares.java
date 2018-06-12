@@ -26,11 +26,6 @@ import java.util.ArrayList;
 
 public class Lista_lugares extends AppCompatActivity {
 
-    ArrayList<Lugar> List = new ArrayList<>();
-    String[] nombre = {"RECETAS SALUDABLES","RECETAS COMIDA RÁPIDA","RECETAS DULCES", "TODAS LAS RECETAS"};
-    String[] category = {"saludable","comida_rapida","dulce", "todas"};
-    int[] images = {R.drawable.puente};
-
     Lugar_adapter adapter;
     ListView list;
 
@@ -54,12 +49,6 @@ public class Lista_lugares extends AppCompatActivity {
         setTitle("Lugares");
         list = findViewById(R.id.list);
 
-
-        for(int i = 0;i<nombre.length;i++){
-
-            List.add(new Lugar(i,nombre[i],"clima","cobro","descripcion","datos","ubicacion",true,"",category[i], BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                    R.drawable.puente),""));
-        }
 
         largoLista = instance.get_lugares_user().size();
 

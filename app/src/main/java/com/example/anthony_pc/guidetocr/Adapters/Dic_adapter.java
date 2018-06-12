@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.anthony_pc.guidetocr.Activities.Lista_palabras;
 import com.example.anthony_pc.guidetocr.Activities.Lugar_activity;
 import com.example.anthony_pc.guidetocr.Class.ItemDic;
 import com.example.anthony_pc.guidetocr.Class.Lugar;
@@ -58,7 +59,7 @@ public class Dic_adapter extends ArrayAdapter {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent();
-                intent.setClass(context, Lugar_activity.class);
+                intent.setClass(context, Lista_palabras.class);
                 intent.putExtra("mensaje", lista_letras.get(i).getLetra()); //Optional parameters/
                 context.startActivity(intent);
             }
