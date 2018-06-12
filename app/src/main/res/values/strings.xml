@@ -15,8 +15,9 @@
     <string name="fb_login_protocol_scheme">fb225332864910654</string>
 
     <string-array name="clima">
-        <item>Baja</item>
-        <item>Media</item>
-        <item>Alta</item>
+        <item>Tropical Húmedo</item>
+        <item>Tropical con estación seca</item>
+        <item>Templado</item>
+        <item>Precipitación</item>
     </string-array>
 </resources>

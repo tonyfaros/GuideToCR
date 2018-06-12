@@ -1,14 +1,22 @@
 package com.example.anthony_pc.guidetocr.Fragments;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.GridView;
 
+import com.example.anthony_pc.guidetocr.Adapters.Dic_adapter;
+import com.example.anthony_pc.guidetocr.Class.ItemDic;
+import com.example.anthony_pc.guidetocr.Class.Lugar;
 import com.example.anthony_pc.guidetocr.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,20 +36,21 @@ public class Palabras extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Adapter adapter;
+    GridView grid;
+    ArrayList<ItemDic> List = new ArrayList<>();
+    String[] letra = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    //int[] color = {R.drawable.vegetales,R.drawable.comida_rapida,R.drawable.postres,R.drawable.carne};
+
+
+
     private OnFragmentInteractionListener mListener;
 
     public Palabras() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Palabras.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static Palabras newInstance(String param1, String param2) {
         Palabras fragment = new Palabras();
@@ -65,7 +74,23 @@ public class Palabras extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_palabras, container, false);
+        View view =inflater.inflate(R.layout.fragment_palabras, container, false);
+
+        grid = (GridView) view.findViewById(R.id.grid);
+
+
+
+        for(int i = 0;i<letra.length;i++){
+
+            List.add(new ItemDic(letra[i],"abc"));
+        }
+
+
+        adapter = new Dic_adapter(getContext(),R.layout.activity_letra,List,grid);
+        //grid.setAdapter(adapter);
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

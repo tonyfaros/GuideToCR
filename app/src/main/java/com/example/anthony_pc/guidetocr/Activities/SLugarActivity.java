@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.anthony_pc.guidetocr.R;
 
+
 public class SLugarActivity extends AppCompatActivity {
 
     @Override
